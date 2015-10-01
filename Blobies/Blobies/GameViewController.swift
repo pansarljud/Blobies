@@ -41,7 +41,7 @@ class GameViewController: UIViewController {
             
             /* Set the scale mode to scale to fit the window */
             scene.size.height = skView.bounds.size.height;
-            scene.size.width = 1400;
+            scene.size.width = 1000;
             scene.scaleMode = .AspectFill
             
             println("screensize in CGSize:");

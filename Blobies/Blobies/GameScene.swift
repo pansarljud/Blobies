@@ -10,27 +10,30 @@ import SpriteKit
 
 class GameScene: SKScene {
     
-    var World: SKNode!
-    var Camera: SKNode!
+    //var World: SKNode!
+    //var Camera: SKNode!
+    var TheLevel: Level!
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
-        self.anchorPoint = CGPointMake(0.3, 0);
+        self.anchorPoint = CGPointMake(0.16, 0);
         
-        let level = Level(progress: 1);
+        self.TheLevel = Level(progress: 1);
+        TheLevel.position = CGPoint(x: 0, y: 0)
+        addChild(TheLevel);
         
-        self.World = SKNode()
+        /*self.World = SKNode()
         self.World.name = "World"
         addChild(self.World)
         self.Camera = SKNode()
         self.Camera.name = "Camera"
         self.World.addChild(self.Camera)
-        
+        */
         let darkBrownColor = UIColor(red:0.4, green:0.3, blue:0.2, alpha:1);
         let lightBrownColor = UIColor(red:0.6, green:0.5, blue:0.4, alpha:1);
         //self.backgroundColor = darkBrownColor;
         self.backgroundColor = darkBrownColor;
-        var ground1 = SKShapeNode(rectOfSize: CGSize(width: 130, height: 30));
+        /*var ground1 = SKShapeNode(rectOfSize: CGSize(width: 130, height: 30));
         ground1.name = "ground1";
         ground1.fillColor = lightBrownColor;
         ground1.position = CGPoint(x: 0, y: 110);
@@ -45,8 +48,7 @@ class GameScene: SKScene {
         myLabel.fontSize = 65;
         myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
         
-        World.addChild(myLabel);
-        
+        World.addChild(myLabel);*/
         
         
         
@@ -76,27 +78,29 @@ class GameScene: SKScene {
    
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
-        Camera.position = CGPoint(x: 0, y: 0)
+        //TheLevel.Camera.position = CGPoint(x: 700, y: 0)
+        TheLevel.moveCamera(300);
         self.didFinishUpdate();
     }
     
     override func didFinishUpdate() {
         
-        Camera.position = CGPoint(x: 0, y: 0)
-        self.centerOnNode(Camera)
+        //TheLevel.Camera.position = CGPoint(x: 700, y: 0)
+        TheLevel.moveCamera(300);
+        //self.centerOnNode(TheLevel.Camera)
         
     }
-    
+
     func centerOnNode(node: SKNode) {
         
         //let cameraPositionInScene: CGPoint = node.scene!.convertPoint(node.position, fromNode: World)
         
         //println(cameraPositionInScene);
         
-        let cameraPositionInScene: CGPoint = node.scene!.convertPoint(node.position, fromNode: World)
+        let cameraPositionInScene: CGPoint = node.scene!.convertPoint(node.position, fromNode: TheLevel)
 
         
-        node.parent!.runAction(SKAction.moveTo(CGPoint(x:node.parent!.position.x - cameraPositionInScene.x, y:node.parent!.position.y - cameraPositionInScene.y), duration: 0))
+        node.parent!.runAction(SKAction.moveTo(CGPoint(x:node.parent!.position.x - cameraPositionInScene.x, y:node.parent!.position.y - cameraPositionInScene.y), duration: 1))
 
         
         /*node.parent!.position = CGPoint(x:node.parent!.position.x - cameraPositionInScene.x, y:node.parent!.position.y - cameraPositionInScene.y)
