@@ -15,6 +15,7 @@
 		DB0724FD1BBBCE0500175AF2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB0724FC1BBBCE0500175AF2 /* Images.xcassets */; };
 		DB0725001BBBCE0500175AF2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB0724FE1BBBCE0500175AF2 /* LaunchScreen.xib */; };
 		DB07250C1BBBCE0500175AF2 /* BlobiesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB07250B1BBBCE0500175AF2 /* BlobiesTests.swift */; };
+		DB9228261BBD442200BC6FED /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9228251BBD442200BC6FED /* Level.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		DB0725051BBBCE0500175AF2 /* BlobiesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlobiesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB07250A1BBBCE0500175AF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB07250B1BBBCE0500175AF2 /* BlobiesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlobiesTests.swift; sourceTree = "<group>"; };
+		DB9228251BBD442200BC6FED /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 				DB0724FC1BBBCE0500175AF2 /* Images.xcassets */,
 				DB0724FE1BBBCE0500175AF2 /* LaunchScreen.xib */,
 				DB0724EF1BBBCE0500175AF2 /* Supporting Files */,
+				DB9228251BBD442200BC6FED /* Level.swift */,
 			);
 			path = Blobies;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 			files = (
 				DB0724F61BBBCE0500175AF2 /* GameScene.swift in Sources */,
 				DB0724F81BBBCE0500175AF2 /* GameViewController.swift in Sources */,
+				DB9228261BBD442200BC6FED /* Level.swift in Sources */,
 				DB0724F21BBBCE0500175AF2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -413,6 +417,7 @@
 				DB0725111BBBCE0500175AF2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DB0725121BBBCE0500175AF2 /* Build configuration list for PBXNativeTarget "BlobiesTests" */ = {
 			isa = XCConfigurationList;
@@ -421,6 +426,7 @@
 				DB0725141BBBCE0500175AF2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

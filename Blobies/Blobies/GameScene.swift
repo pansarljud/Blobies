@@ -17,6 +17,8 @@ class GameScene: SKScene {
         /* Setup your scene here */
         self.anchorPoint = CGPointMake(0.3, 0);
         
+        let level = Level(progress: 1);
+        
         self.World = SKNode()
         self.World.name = "World"
         addChild(self.World)
@@ -27,6 +29,7 @@ class GameScene: SKScene {
         let darkBrownColor = UIColor(red:0.4, green:0.3, blue:0.2, alpha:1);
         let lightBrownColor = UIColor(red:0.6, green:0.5, blue:0.4, alpha:1);
         //self.backgroundColor = darkBrownColor;
+        self.backgroundColor = darkBrownColor;
         var ground1 = SKShapeNode(rectOfSize: CGSize(width: 130, height: 30));
         ground1.name = "ground1";
         ground1.fillColor = lightBrownColor;
