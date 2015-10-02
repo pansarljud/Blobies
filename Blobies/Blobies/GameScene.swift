@@ -13,6 +13,7 @@ class GameScene: SKScene {
     //var World: SKNode!
     //var Camera: SKNode!
     var TheLevel: Level!
+    var globalBool: Bool = false
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -50,7 +51,7 @@ class GameScene: SKScene {
         
         World.addChild(myLabel);*/
         
-        
+        self.TheLevel.spawnBlobNode(CGPoint(x: 50, y: 150))
         
         
     }
@@ -60,7 +61,23 @@ class GameScene: SKScene {
         /* Called when a touch begins */
         
         for touch: AnyObject in touches {
+            
+            // Record initial location of touch.
+            let touch = touches.anyObject() as UITouch
             let location = touch.locationInNode(self)
+            CGPathMoveToPoint(ref, nil, location.x, location.y)
+            
+            // Select the sprite where the touch occurred.
+            var isSprite = checkIfNodeIsSprite(location)
+            
+            if (isSprite) {
+                self.globalBool = true;
+                
+            } else {
+                self.globalBool = false;
+            }
+            
+            /*let location = touch.locationInNode(self)
             
             let sprite = SKSpriteNode(imageNamed:"Spaceship")
             
@@ -72,21 +89,66 @@ class GameScene: SKScene {
             
             sprite.runAction(SKAction.repeatActionForever(action))
             
-            self.addChild(sprite)
+            self.addChild(sprite)*/
         }
+    }
+    var ref = CGPathCreateMutable()
+    override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
+        var touch = touches.anyObject() as UITouch!
+        var positionInScene = touch.locationInNode(self)
+        
+        /*if (self.globalBool) {
+        var lineNode = SKShapeNode()
+        CGPathMoveToPoint(pathToDraw, nil, positionInScene.x, positionInScene.y)
+        CGPathAddLineToPoint(pathToDraw, nil, positionInScene.x, positionInScene.y)
+        lineNode.path = pathToDraw
+        lineNode.lineWidth = 40.0
+        lineNode.strokeColor = UIColor.redColor()
+        lineNode.fillColor = UIColor.redColor()
+        println(lineNode.fillColor)
+        self.addChild(lineNode)
+        }*/
+        //firstPoint = positionInScene
+        if (self.globalBool) {
+            
+            for touch: AnyObject in touches {
+                let locationInScene = touch.locationInNode(self)
+            CGPathAddLineToPoint(ref, nil, positionInScene.x, positionInScene.y)
+
+            }
+            
+        }
+    }
+    
+    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+        var lineNode = SKShapeNode();
+        lineNode.path = ref
+        lineNode.lineWidth = 8
+        lineNode.strokeColor = UIColor.redColor()
+        lineNode.physicsBody = SKPhysicsBody(polygonFromPath: ref)
+        self.addChild(lineNode)
+        ref = CGPathCreateMutable()
+    }
+    
+    func checkIfNodeIsSprite(location: CGPoint) ->Bool {
+        if let touchedNode = self.nodeAtPoint(location) as? SKSpriteNode {
+            println("Selected sprite with name: " + touchedNode.name!)
+            return true
+        }
+        return false
     }
    
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
         //TheLevel.Camera.position = CGPoint(x: 700, y: 0)
-        TheLevel.moveCamera(300);
-        self.didFinishUpdate();
+        //TheLevel.moveCamera(300);
+        //self.didFinishUpdate();
     }
     
     override func didFinishUpdate() {
         
         //TheLevel.Camera.position = CGPoint(x: 700, y: 0)
-        TheLevel.moveCamera(300);
+        //TheLevel.moveCamera(300);
         //self.centerOnNode(TheLevel.Camera)
         
     }
