@@ -96,20 +96,13 @@ class GameScene: SKScene {
     override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
         var touch = touches.anyObject() as UITouch!
         var positionInScene = touch.locationInNode(self)
-        
-        /*if (self.globalBool) {
-        var lineNode = SKShapeNode()
-        CGPathMoveToPoint(pathToDraw, nil, positionInScene.x, positionInScene.y)
-        CGPathAddLineToPoint(pathToDraw, nil, positionInScene.x, positionInScene.y)
-        lineNode.path = pathToDraw
-        lineNode.lineWidth = 40.0
-        lineNode.strokeColor = UIColor.redColor()
-        lineNode.fillColor = UIColor.redColor()
-        println(lineNode.fillColor)
-        self.addChild(lineNode)
-        }*/
-        //firstPoint = positionInScene
+
         if (self.globalBool) {
+            //TODO: Set the lengthlimit.
+            //TODO: Check if the lengthlimit has been reached:
+            //TODO: After each for-loop, check how long the subpath is.
+            //TODO: If the total length of the subpath is reached, don't add the
+            //latest subpath and end the for-loop.
             
             for touch: AnyObject in touches {
                 let locationInScene = touch.locationInNode(self)
